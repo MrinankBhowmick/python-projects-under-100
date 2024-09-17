@@ -1,0 +1,44 @@
+import random 
+
+def shoot(): 
+shot_result = random.randint(0, 1) 
+return shot_result
+
+def main(): 
+player_score = 0 
+computer_score = 0 
+
+  while True: 
+    print("Basketball Game") 
+    print("1. Shoot") 
+    print("2. Quit") 
+
+    choice = input("Enter your choice: ") 
+    if choice == "1":
+      result = shoot() 
+      if result == 1: 
+        print("Swish! You made the shot!") 
+        player_score += 2 
+    else: 
+        print("Oops, you missed the shot.") 
+    computer_result = shoot() 
+    if computer_result == 1: 
+        print("The computer made the shot!") 
+        computer_score += 2 
+    else:
+        print("The computer missed the shot.") 
+  elif choice == "2":
+      break 
+  else: 
+      print("Invalid choice. Please select 1 to shoot or 2 to quit.")
+
+print("Final Score:") 
+print(f"You: {player_score}") 
+print(f"Computer: {computer_score}") 
+if player_score > computer_score: 
+    print("You win!") 
+elif player_score < computer_score:
+    print("The computer wins!") 
+else: print("It's a tie!") 
+if __name__ == "__main__":
+    main()
