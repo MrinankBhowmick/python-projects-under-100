@@ -1,0 +1,35 @@
+import datetime
+from forex_python.converter import CurrencyRates
+import requests
+
+# Function to get the current time
+def get_current_time():
+    current_time = datetime.datetime.now()
+    return current_time.strftime('%Y-%m-%d %H:%M:%S')
+
+# Function to convert currency
+def convert_currency(amount, from_currency, to_currency):
+    c = CurrencyRates()
+    return c.convert(from_currency, to_currency, amount)
+
+# Function to get the latest exchange rates
+def get_exchange_rates():
+    url = 'https://api.exchangerate-api.com/v4/latest/USD'
+    response = requests.get(url)
+    data = response.json()
+    return data['rates']
+
+if __name__ == '__main__':
+    print("Welcome to the Time and Currency Converter!")
+    print("Current Time: ", get_current_time())
+
+    from_currency = 'USD'
+    to_currency = 'EUR'
+    amount = 100  # You can change this amount to whatever you like
+
+    exchange_rates = get_exchange_rates()
+    if from_currency in exchange_rates and to_currency in exchange_rates:
+        conversion = convert_currency(amount, from_currency, to_currency)
+        print(f"{amount} {from_currency} is equal to {conversion:.2f} {to_currency}")
+    else:
+        print("Invalid currency codes.")
