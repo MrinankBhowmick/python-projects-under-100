@@ -187,5 +187,6 @@ while c != "-1":
         print("Sorry, invalid option!")
     os.system("cls||clear")
     print(f"The answer is {res}")
-    time.sleep(2)
+    print("Waiting for 5 seconds before next prompt window")
+    time.sleep(5)
     os.system("cls||clear")
