@@ -139,6 +139,24 @@ def binomial(num):
     result = factorial(num[0]) / (factorial(num[1]) * factorial(num[0] - num[1]))
     return result
 
+def power(num,pow):
+    """
+    Function to calculate the power of a number
+    takes 2 numbers as arguments and calculates the power of num raised to pow
+
+    """
+    power = 1
+
+    if pow == 0:
+        return 1
+    else:
+        for i in range(1, pow + 1):
+            power = power * num
+
+        return power
+
+
+
 
 c = 0
 while c != "-1":
@@ -149,7 +167,8 @@ while c != "-1":
     print("Enter '5' for average")
     print("Enter '6' for factorial")
     print("Enter '7' for complex arithmetic")
-    print("ENter '8'  for binomial")
+    print("Enter '8'  for binomial")
+    print("Enter '9' for power")
     print("Enter '-1' to exit.\n")
 
     c = input("Your choice is: ")
@@ -175,11 +194,18 @@ while c != "-1":
         os.system("cls||clear")
         res = complex_arithmetic()
     elif c == "8":
-        num = list(map(int, input("Enter the number separated by space").split()))
+        num = list(map(int, input("Enter the number separated by space:").split()))
         if num[0] < num[1]:
             print("Invalid entry")
             continue
         res = binomial(num)
+    elif c=="9":
+        num = list(map(int,input("Enter two numbers separated by space:").split()))
+        if num[1]<0:
+            print("Invalid entry: try again")
+            continue
+        res = power(num[0],num[1])
+
     elif c == "-1":
         print("Thank you for using the calculator!")
         break
