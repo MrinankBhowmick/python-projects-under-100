@@ -1,14 +1,10 @@
-# import win10toast
+# install plyer using this command "pip install plyer"
+from plyer import notification
 
-from win10toast import ToastNotifier
-
-# create an object to ToastNotifier class
-
-n = ToastNotifier()
-
-n.show_toast(
-    "Python project",
-    "Here is your notification body",
-    duration=20,
-    icon_path="logo.ico",
+# Display a notification with an icon
+notification.notify(
+    title="Python Project", # This is the Title
+    message="Here is your notification body", # This is the body of the notification
+    app_icon="logo.ico",  # Replace with the path to your icon file
+    timeout=10  # Duration in seconds
 )
